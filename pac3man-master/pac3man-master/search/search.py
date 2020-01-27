@@ -88,22 +88,25 @@ def depthFirstSearch(problem):
     """
     "*** YOUR CODE HERE ***"
     from util import Stack
-    start = (problem.getStartState(), [], 0)
+    start = (problem.getStartState(), [])
     stack = Stack()
-    visited = []
+    visited = set()
     stack.push(start)
-    (state, direction,cost) = stack.pop()
-    visited.append(state)
-    while not problem.isGoalState(state):
-        succ = problem.getSuccessors(state)
-        for s in succ:
-            if (not s[0] in visited) or (problem.isGoalState(s[0])):
-                stack.push((s[0], direction + [s[1]], cost + s[2]))
-                visited.append(s[0])
-        (state,direction,cost) = stack.pop() 
-    return direction       
-    
+    while not stack.isEmpty():
+        state, direction = stack.pop()
+        if state in visited:
+            continue
+        if problem.isGoalState(state):
+            return direction
+        
+        visited.add(state)
 
+        for s in problem.getSuccessors(state):
+            if (s[0] in visited):
+                continue
+            stack.push((s[0], direction + [s[1]]))
+            
+    return []
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""

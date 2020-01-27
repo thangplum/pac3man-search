@@ -167,7 +167,6 @@ ERROR_HINT_MAP = {
         a line of code assuming that the state is (x, y) and we run your code
         on a state space with (x, y, z), this error could be thrown. Try
         making your code more general and submit again!
-
     """
   }
 }
