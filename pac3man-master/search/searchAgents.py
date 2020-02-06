@@ -489,16 +489,7 @@ def foodHeuristic(state, problem):
     Subsequent calls to this heuristic can access
     problem.heuristicInfo['wallCount']
     """
-    position, foodGrid = state
-    "*** YOUR CODE HERE ***"
-    #return len(foodGrid.asList())
-    # food = foodGrid.asList()
-    # if len(food) == 0:
-    #     return 0
-
-    # closestFood, closestCost = min([(f, util.manhattanDistance(f, position)) for f in food], key=lambda t: t[1])
-    
-    # # subtract 1 so we don't double count the closest food
+   
     tempList=[]
     if len(state[1].asList()) > 0:
         for i in state[1].asList():
